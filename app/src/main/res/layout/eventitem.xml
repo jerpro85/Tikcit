@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <TextView
+            android:id="@+id/TvDate"
+            android:text="24 feb 2018"
+            android:textColor="#fff"
+            android:padding="4dp"
+            android:textSize="12sp"
+            android:background="#111"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_marginTop="0dp"
+           android:layout_below="@id/TvDate"
+            android:id="@+id/split"
+            android:layout_marginBottom="5dp"
+
+
+            android:layout_width="match_parent"
+            android:background="#111"
+            android:layout_height="1dp"></RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RlMain"
+            android:layout_width="match_parent"
+            android:minHeight="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/TvDate">
+
+                <ImageView
+                    android:id="@+id/IvImage"
+                    android:layout_width="80dp"
+                    android:src="@drawable/img1"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/IvImageTitle"
+                    android:layout_width="16dp"
+                    android:src="@drawable/ic_trophy_zwart"
+                    android:layout_toRightOf="@id/IvImage"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="5dp"
+                    android:scaleType="centerCrop" />
+                <TextView
+                    android:id="@+id/TvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TvDescription"
+                    android:layout_alignStart="@+id/TvDescription"
+                    android:layout_alignTop="@+id/IvImage"
+                    android:text="Lol"
+                    android:textColor="@color/Text" />
+
+                <TextView
+                    android:id="@+id/TvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TvName"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/IvImageTitle"
+                    android:text="Description"
+                    android:textSize="11dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/RlMain"
+            android:id="@+id/splitbottom"
+
+            android:layout_marginBottom="20dp"
+
+
+            android:layout_width="match_parent"
+            android:background="#111"
+            android:layout_height="1dp"></RelativeLayout>
+
+</RelativeLayout>
