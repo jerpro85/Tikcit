@@ -27,53 +27,59 @@ public class Connection {
 
 
     public static ApiResponse Post(String data) {
-        try {
+        final ApiResponse response = new ApiResponse();
+        Async.RunTask(new Async.Item(0) {
+            @Override
+            public void Method() {
+                try {
 
-            String httpsURL = "https://api.tikcit.com/oauth/authorize";
-            URL myUrl = new URL(httpsURL);
-            HttpsURLConnection conn = (HttpsURLConnection) myUrl.openConnection();
-            conn.connect();
-            String urlParameters  = "client_id=vH20yrkqW0aKOM8Z1nQAHlg2Ik4doy&state=&scope=unrestricted&email=noreplycoldfire@gmail.com&password=helloworld";
-            int    postDataLength = urlParameters.length();
-            conn.setDoOutput( true );
-            conn.setInstanceFollowRedirects( false );
-            conn.setRequestMethod( "POST" );
-            conn.setUseCaches( false );
-            try{
-                OutputStreamWriter wr = new OutputStreamWriter( conn.getOutputStream());
-                wr.write( urlParameters );
-                wr.flush();
-                wr.close();
-            } catch (Exception e) {
-                System.out.println("b1" + e.getMessage());
+                    String httpsURL = "https://api.tikcit.com/oauth/authorize";
+                    URL myUrl = new URL(httpsURL);
+                    HttpsURLConnection conn = (HttpsURLConnection) myUrl.openConnection();
+                    conn.connect();
+                    String urlParameters  = "client_id=vH20yrkqW0aKOM8Z1nQAHlg2Ik4doy&state=&scope=unrestricted&email=noreplycoldfire@gmail.com&password=helloworld";
+                    int    postDataLength = urlParameters.length();
+                    conn.setDoOutput( true );
+                    conn.setInstanceFollowRedirects( false );
+                    conn.setRequestMethod( "POST" );
+                    conn.setUseCaches( false );
+                    try{
+                        OutputStreamWriter wr = new OutputStreamWriter( conn.getOutputStream());
+                        wr.write( urlParameters );
+                        wr.flush();
+                        wr.close();
+                    } catch (Exception e) {
+                        System.out.println("b1" + e.getMessage());
+                    }
+
+
+
+
+                    System.out.println("test55");
+                    InputStream is = conn.getInputStream();
+
+                    InputStreamReader isr = new InputStreamReader(is);
+
+                    BufferedReader br = new BufferedReader(isr);
+                    String inputLine;
+                    while ((inputLine = br.readLine()) != null) {
+                        response.content = inputLine;
+                    }
+                    response.url = conn.getHeaderField("Location");
+
+                    br.close();
+
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-
-
-
-
-            System.out.println("test55");
-            InputStream is = conn.getInputStream();
-
-            InputStreamReader isr = new InputStreamReader(is);
-
-            BufferedReader br = new BufferedReader(isr);
-            String inputLine;
-            ApiResponse response = new ApiResponse();
-            while ((inputLine = br.readLine()) != null) {
-                response.content = inputLine;
-            }
-            response.url = conn.getHeaderField("Location");
-
-            br.close();
-            return response;
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        });
+        return response;
     }
 
 
