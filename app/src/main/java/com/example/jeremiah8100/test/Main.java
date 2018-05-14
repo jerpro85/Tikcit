@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jeremiah8100.test.Items.Account;
+
 public class Main extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
@@ -29,7 +31,8 @@ public class Main extends AppCompatActivity {
     public native String stringFromJNI();
 
     public void Login(View v){
-        Connection.Login("noreplycoldfire@gmail.com", "helloworld");
+        Account acc = Connection.Login("noreplycoldfire@gmail.com", "helloworld");
+        Connection.GetEvents(acc);
         startActivity(new Intent(Main.this, Inapp.class));
 
     }

@@ -2,6 +2,7 @@ package com.example.jeremiah8100.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 /**
  * Created by jeremiah8100 on 14-5-2018.
@@ -25,10 +26,12 @@ public class Async {
     }
 
     public static void RunTask(final Item i){
+        final Semaphore locker = new Semaphore(0);
         final Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 i.Method();
+                locker.release();
                 try {
                     Thread.currentThread().join();
                 } catch (InterruptedException e) {
@@ -37,7 +40,11 @@ public class Async {
             }
         });
         t.start();
-
+        try {
+            locker.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -45,7 +52,7 @@ public class Async {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Tick();
+               // Tick();
             }
         }).start();
     }
@@ -58,6 +65,11 @@ public class Async {
             } else {
                 i.currenttime++;
             }
+        }
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         Tick();
     }
