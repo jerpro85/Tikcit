@@ -29,6 +29,7 @@ public class Main extends AppCompatActivity {
     public native String stringFromJNI();
 
     public void Login(View v){
+        Connection.Login("noreplycoldfire@gmail.com", "helloworld");
         startActivity(new Intent(Main.this, Inapp.class));
 
     }
