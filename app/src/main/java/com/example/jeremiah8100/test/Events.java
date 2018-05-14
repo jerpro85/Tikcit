@@ -34,7 +34,7 @@ public class Events extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        t
+
         View main = inflater.inflate(R.layout.fragment_events, container, false);
         List<Event> events = new ArrayList<>();
         events.add(new Event("Databinding", "Binding van data met controls"));

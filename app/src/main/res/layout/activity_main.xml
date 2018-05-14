@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     tools:context="com.example.jeremiah8100.test.Main">
-
 
     <LinearLayout
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="60dp"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#fff"
         android:layout_centerVertical="true"
-
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="UselessParent">
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="35dp"
-            android:padding="0dp"
-            android:textColor="#9a1602"
-
-            android:text="Login"
-            />
+            android:src="@drawable/tikcitheader"/>
 
         <EditText
-            android:layout_marginTop="20dp"
-            android:id="@+id/editText"
 
-            android:layout_height="70dp"
-            android:background="@drawable/textbox"
+            android:id="@+id/editText"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
+
+            android:background="@drawable/textbox"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName"
             android:textColor="#a09a98"
- android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"/>
 
         <EditText
             android:id="@+id/editText3"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:background="@drawable/textbox"
-            android:ems="10"
+            <!--android:ems="10"-->
             android:textColor="#a09a98"
             android:hint="Password"
-            android:layout_height="70dp"
 
             android:inputType="textPassword" />
+
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,14 +57,11 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="40dp"
             android:height="60dp"
             android:background="#9a1602"
             android:onClick="Login"
-            android:text="Identificeren"
-
+            android:text="Aight"
             android:textColor="#fff" />
     </LinearLayout>
-
 </RelativeLayout>
