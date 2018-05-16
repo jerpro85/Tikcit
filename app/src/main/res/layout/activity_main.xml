@@ -32,28 +32,28 @@
             />
 
         <EditText
-            android:layout_marginTop="20dp"
-            android:id="@+id/editText"
+            android:id="@+id/EtUsername"
+            android:layout_width="match_parent"
 
             android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/textbox"
-            android:layout_width="match_parent"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName"
-            android:textColor="#a09a98"
- android:layout_marginBottom="20dp" />
+            android:textColor="#a09a98" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/EtPassword"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:background="@drawable/textbox"
             android:ems="10"
-            android:textColor="#a09a98"
             android:hint="Password"
-            android:layout_height="70dp"
+            android:inputType="textPassword"
 
-            android:inputType="textPassword" />
+            android:textColor="#a09a98" />
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

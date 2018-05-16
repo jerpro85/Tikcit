@@ -7,6 +7,14 @@ package com.example.jeremiah8100.test.Items;
 public class Account {
     String token;
     String email;
+    public static class Result {
+        public boolean authenticated = false;
+        public Account account = null;
+        public String message = "";
+        public Result(){
+
+        }
+    }
     public Account(String token, String email ){
         this.token = token;
         this.email = email;

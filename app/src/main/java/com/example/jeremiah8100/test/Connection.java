@@ -124,11 +124,11 @@ public class Connection {
     }
 
 
-    public static Account Login(String email, String password){
+    public static Account.Result Login(String email, String password){
         ApiResponse response = Post("https://api.tikcit.com/oauth/authorize","client_id=vH20yrkqW0aKOM8Z1nQAHlg2Ik4doy&state=&scope=unrestricted&email="+email+"&password="+password+"", null);
-
+        Account.Result result = new Account.Result();
         if(response.content!=null){
-            System.out.println("bad auth: ");
+            result.message = "Foute inloggegevens!";
 
         } else {
 
@@ -138,14 +138,17 @@ public class Connection {
                 JSONObject obj = new JSONObject(response2.content);
                 String token = obj.getString("access_token");
                 System.out.println("token: " + token);
-                return new Account(token, email);
+                result.account = new Account(token, email);
+                result.authenticated = true;
+                result.message = "Gebruiker ingelogd";
             } catch (JSONException e) {
+                result.message = "Error bij het inloggen";
                 e.printStackTrace();
             }
 
 
         }
-        return null;
+        return result;
 
     }
 

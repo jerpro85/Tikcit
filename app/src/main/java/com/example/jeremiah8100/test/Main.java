@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jeremiah8100.test.Items.Account;
@@ -11,6 +12,8 @@ import com.example.jeremiah8100.test.Items.Account;
 public class Main extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
+    EditText EtUsername;
+    EditText EtPassword;
     static {
         System.loadLibrary("native-lib");
     }
@@ -19,7 +22,8 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        EtUsername = findViewById(R.id.EtUsername);
+        EtPassword = findViewById(R.id.EtPassword);
         // Example of a call to a native method
 
     }
@@ -31,9 +35,15 @@ public class Main extends AppCompatActivity {
     public native String stringFromJNI();
 
     public void Login(View v){
-        Account acc = Connection.Login("noreplycoldfire@gmail.com", "helloworld");
-        Connection.GetEvents(acc);
-        startActivity(new Intent(Main.this, Inapp.class));
+        Account.Result result = Connection.Login(EtUsername.getText().toString(), EtPassword.getText().toString());
+        System.out.println(result.message);
+        if(result.authenticated) {
+            Account acc = result.account;
+            startActivity(new Intent(Main.this, Inapp.class));
+        }
+
 
     }
+
+
 }

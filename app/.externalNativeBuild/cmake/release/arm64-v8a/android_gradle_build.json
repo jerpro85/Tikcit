@@ -1,9 +1,9 @@
 
 {
-	"buildFiles" : [ "C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/CMakeLists.txt" ],
+	"buildFiles" : [ "/home/jeremiah/StudioProjects/Tikcit/app/CMakeLists.txt" ],
 	"cleanCommands" : 
 	[
-		"C:\\Users\\jeremiah8100\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\jeremiah8100\\Documents\\GitHub\\Tikcit\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target clean"
+		"/home/jeremiah/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/arm64-v8a --target clean"
 	],
 	"cppFileExtensions" : [ "cpp" ],
 	"libraries" : 
@@ -12,27 +12,27 @@
 		{
 			"abi" : "arm64-v8a",
 			"artifactName" : "native-lib",
-			"buildCommand" : "C:\\Users\\jeremiah8100\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.3155560\\bin\\cmake.exe --build C:\\Users\\jeremiah8100\\Documents\\GitHub\\Tikcit\\app\\.externalNativeBuild\\cmake\\release\\arm64-v8a --target native-lib",
+			"buildCommand" : "/home/jeremiah/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/arm64-v8a --target native-lib",
 			"buildType" : "release",
 			"files" : 
 			[
 				
 				{
-					"flags" : "  -target aarch64-none-linux-android -gcc-toolchain C:/Users/jeremiah8100/AppData/Local/Android/sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64 --sysroot=C:/Users/jeremiah8100/AppData/Local/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64  -Dnative_lib_EXPORTS -isystem C:\\Users\\jeremiah8100\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem C:\\Users\\jeremiah8100\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\arm64-v8a\\include -isystem C:\\Users\\jeremiah8100\\AppData\\Local\\Android\\sdk\\ndk-bundle\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -fno-exceptions -fno-rtti -std=c++14 -frtti -fexceptions -O2 -DNDEBUG -O2 -DNDEBUG  -fPIC    -c ",
-					"src" : "C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/src/main/cpp/native-lib.cpp",
-					"workingDirectory" : "C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/.externalNativeBuild/cmake/release/arm64-v8a"
+					"flags" : "  --target=aarch64-none-linux-android --gcc-toolchain=/home/jeremiah/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64 --sysroot=/home/jeremiah/Android/Sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /home/jeremiah/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /home/jeremiah/Android/Sdk/ndk-bundle/sources/android/support/include -isystem /home/jeremiah/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /home/jeremiah/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -std=c++14 -frtti -fexceptions -O2 -DNDEBUG  -fPIC    -c ",
+					"src" : "/home/jeremiah/StudioProjects/Tikcit/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "/home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/arm64-v8a"
 				}
 			],
-			"output" : "C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so",
-			"toolchain" : "3200640237"
+			"output" : "/home/jeremiah/StudioProjects/Tikcit/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so",
+			"toolchain" : "677261085770774228"
 		}
 	},
 	"toolchains" : 
 	{
-		"3200640237" : 
+		"677261085770774228" : 
 		{
-			"cCompilerExecutable" : "C:/Users/jeremiah8100/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
-			"cppCompilerExecutable" : "C:/Users/jeremiah8100/AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+			"cCompilerExecutable" : "/home/jeremiah/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/jeremiah/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
 		}
 	}
 }
