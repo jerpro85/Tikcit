@@ -1,5 +1,7 @@
 package com.example.jeremiah8100.test;
 
+import android.util.JsonWriter;
+
 import com.example.jeremiah8100.test.Items.Account;
 import com.example.jeremiah8100.test.Items.Event;
 
@@ -156,6 +158,20 @@ public class Connection {
         List<Event> events = new ArrayList<Event>();
         ApiResponse response = Get("https://api.tikcit.com/events","sort=dateStart%7Casc&page=1&per_page=20&filter=dateStart+gte+1526047537.291&search=", account.getToken());
         System.out.println("events:" + response.content);
+        try {
+            JSONObject obj = new JSONObject(response.content);
+            JSONArray arr = obj.getJSONArray("data");
+
+            for(int a = 0;a < arr.length();a++) {
+                System.out.println("Event: " + arr.getJSONObject(a).toString());
+                JSONObject tobj = arr.getJSONObject(a);
+                Event event = new Event(tobj.getString("name"), tobj.getString("description"));
+                events.add(event);
+
+            }
+        } catch (JSONException e) {
+            System.out.println( "error 3: " + e.getMessage());
+        }
         return events;
     }
 

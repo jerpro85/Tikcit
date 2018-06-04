@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.jeremiah8100.test.Items.Account;
+import com.example.jeremiah8100.test.Items.Sessions;
 
 public class Main extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class Main extends AppCompatActivity {
         Account.Result result = Connection.Login(EtUsername.getText().toString(), EtPassword.getText().toString());
         System.out.println(result.message);
         if(result.authenticated) {
-            Account acc = result.account;
+            Sessions.currentSession.account = result.account;
             startActivity(new Intent(Main.this, Inapp.class));
         }
 

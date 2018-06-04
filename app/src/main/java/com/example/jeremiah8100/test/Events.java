@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.jeremiah8100.test.Adapters.ListAdapters.Eventadapter;
+import com.example.jeremiah8100.test.Items.Account;
 import com.example.jeremiah8100.test.Items.Event;
+import com.example.jeremiah8100.test.Items.Sessions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +37,10 @@ public class Events extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View main = inflater.inflate(R.layout.fragment_events, container, false);
-        List<Event> events = new ArrayList<>();
-        events.add(new Event("Databinding", "Binding van data met controls"));
-        for(int a = 0;a < 20;a++)
-        events.add(new Event("Hackaton", "Een wedstrijd waarbij de groep met de beste applicatie wint"));
+        List<Event> events = Connection.GetEvents(Sessions.currentSession.account);
+        //events.add(new Event("Databinding", "Binding van data met controls"));
+        //for(int a = 0;a < 20;a++)
+        //vents.add(new Event("Hackaton", "Een wedstrijd waarbij de groep met de beste applicatie wint"));
 
         ListView lv = main.findViewById(R.id.LvEventItems);
         lv.setAdapter(new Eventadapter(getContext(),events));
