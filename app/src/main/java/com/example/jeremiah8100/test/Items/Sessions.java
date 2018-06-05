@@ -5,6 +5,8 @@ public class Sessions {
     public static class Session {
         public Account account = null;
 
+        private Session(){};
+
 
     }
 }

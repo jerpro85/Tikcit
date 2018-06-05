@@ -17,10 +17,12 @@ public class Event {
     public Date Enddate;
     public List<Activity> Activities = new ArrayList<>();
 
-    public Event(String Id, String Name, String Description, List<Activity> Activities){
+    public Event(String Id, String Name, String Description, List<Activity> Activities, Date Startdate, Date Enddate){
         this.Name = Name;
         this.Description = Description;
         this.Id= Id;
         this.Activities = Activities;
+        this.Startdate = Startdate;
+        this.Enddate = Enddate;
     }
 }

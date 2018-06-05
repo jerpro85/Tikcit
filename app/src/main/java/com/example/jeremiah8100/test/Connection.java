@@ -172,16 +172,20 @@ public class Connection {
             JSONArray arr = obj.getJSONArray("data");
 
             for(int a = 0;a < arr.length();a++) {
-
                 JSONObject tobj = arr.getJSONObject(a);
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm");
+                Date Startdate = format.parse(tobj.getJSONObject("dateStart").getString("$date"));
+                Date Enddate = format.parse(tobj.getJSONObject("dateEnd").getString("$date"));
                 String eventid = tobj.getJSONObject("_id").getString("$oid");
                 List<Activity> activities = GetActivities(eventid, account);
-                Event event = new Event(eventid, tobj.getString("name"), tobj.getString("description"), activities);
+                Event event = new Event(eventid, tobj.getString("name"), tobj.getString("description"), activities, Startdate, Enddate);
                 events.add(event);
 
             }
         } catch (JSONException e) {
             System.out.println( "error 3: " + e.getMessage());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return events;
     }
@@ -197,22 +201,17 @@ public class Connection {
                 JSONObject tobj = arr.getJSONObject(a);
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm");
 
-                Date Startdate = null;
-                try {
-                    Startdate = format.parse(tobj.getJSONObject("dateStart").getString("$date"));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Calendar cal = Calendar.getInstance();
-                System.out.println("value: " + Startdate.getYear());
-                //cal.setTime(Startdate);
-                System.out.println(cal.get(Calendar.YEAR));
-                Activity activity = new Activity(tobj.getJSONObject("_id").getString("$oid"), tobj.getString("name"), tobj.getString("description"));
+
+                Date Startdate = format.parse(tobj.getJSONObject("dateStart").getString("$date"));
+                Date Enddate = format.parse(tobj.getJSONObject("dateEnd").getString("$date"));
+                Activity activity = new Activity(tobj.getJSONObject("_id").getString("$oid"), tobj.getString("name"), tobj.getString("description"), Startdate, Enddate);
                 activities.add(activity);
 
             }
         } catch (JSONException e) {
             System.out.println( "error 3: " + e.getMessage());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         return activities;
     }
