@@ -3,6 +3,7 @@ package com.example.jeremiah8100.test;
 import android.util.JsonWriter;
 
 import com.example.jeremiah8100.test.Items.Account;
+import com.example.jeremiah8100.test.Items.Activity;
 import com.example.jeremiah8100.test.Items.Event;
 
 import java.io.BufferedReader;
@@ -16,7 +17,15 @@ import java.net.Socket;
 import java.net.URL;
 import org.json.*;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -163,9 +172,11 @@ public class Connection {
             JSONArray arr = obj.getJSONArray("data");
 
             for(int a = 0;a < arr.length();a++) {
-                System.out.println("Event: " + arr.getJSONObject(a).toString());
+
                 JSONObject tobj = arr.getJSONObject(a);
-                Event event = new Event(tobj.getString("name"), tobj.getString("description"));
+                String eventid = tobj.getJSONObject("_id").getString("$oid");
+                List<Activity> activities = GetActivities(eventid, account);
+                Event event = new Event(eventid, tobj.getString("name"), tobj.getString("description"), activities);
                 events.add(event);
 
             }
@@ -173,6 +184,37 @@ public class Connection {
             System.out.println( "error 3: " + e.getMessage());
         }
         return events;
+    }
+
+    private static List<Activity> GetActivities(String eventid, Account account){
+        List<Activity> activities = new ArrayList<Activity>();
+        ApiResponse response = Get("https://api.tikcit.com/events/", eventid + "/statistics", account.getToken());
+        try {
+            JSONArray arr = new JSONArray(response.content);
+
+            for(int a = 0;a < arr.length();a++) {
+                System.out.println("Activity: " + arr.getJSONObject(a).toString());
+                JSONObject tobj = arr.getJSONObject(a);
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm");
+
+                Date Startdate = null;
+                try {
+                    Startdate = format.parse(tobj.getJSONObject("dateStart").getString("$date"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar cal = Calendar.getInstance();
+                System.out.println("value: " + Startdate.getYear());
+                //cal.setTime(Startdate);
+                System.out.println(cal.get(Calendar.YEAR));
+                Activity activity = new Activity(tobj.getJSONObject("_id").getString("$oid"), tobj.getString("name"), tobj.getString("description"));
+                activities.add(activity);
+
+            }
+        } catch (JSONException e) {
+            System.out.println( "error 3: " + e.getMessage());
+        }
+        return activities;
     }
 
 

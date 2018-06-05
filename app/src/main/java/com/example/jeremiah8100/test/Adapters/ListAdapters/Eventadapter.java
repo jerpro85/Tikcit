@@ -12,7 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.jeremiah8100.test.Connection;
 import com.example.jeremiah8100.test.Items.Event;
+import com.example.jeremiah8100.test.Items.Sessions;
 import com.example.jeremiah8100.test.R;
 
 import java.util.List;
@@ -60,6 +62,7 @@ public class Eventadapter extends BaseAdapter {
 
        // iv.setImageBitmap(b);
         tv.setText(Events.get(i).Name);
+
 
         return control;
     }
