@@ -23,6 +23,7 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Database.db.Init("data.db", this);
         EtUsername = findViewById(R.id.EtUsername);
         EtPassword = findViewById(R.id.EtPassword);
         // Example of a call to a native method

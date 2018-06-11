@@ -38,6 +38,9 @@ public class Events extends Fragment {
         // Inflate the layout for this fragment
         View main = inflater.inflate(R.layout.fragment_events, container, false);
         List<Event> events = Connection.GetEvents(Sessions.currentSession.account);
+        for(Event event : events){
+            Database.db.AddEvent(event);
+        }
         //events.add(new Event("Databinding", "Binding van data met controls"));
         //for(int a = 0;a < 20;a++)
         //vents.add(new Event("Hackaton", "Een wedstrijd waarbij de groep met de beste applicatie wint"));
