@@ -1,8 +1,6 @@
 package com.example.jeremiah8100.test.Items;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Activity {
     public String Id;

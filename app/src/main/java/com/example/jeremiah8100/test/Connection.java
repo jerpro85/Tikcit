@@ -1,10 +1,12 @@
 package com.example.jeremiah8100.test;
 
-import android.util.JsonWriter;
-
 import com.example.jeremiah8100.test.Items.Account;
 import com.example.jeremiah8100.test.Items.Activity;
 import com.example.jeremiah8100.test.Items.Event;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,19 +15,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
-import java.net.Socket;
 import java.net.URL;
-import org.json.*;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;

@@ -3,7 +3,6 @@ package com.example.jeremiah8100.test;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Display;
 
 import com.example.jeremiah8100.test.Items.Event;
 
