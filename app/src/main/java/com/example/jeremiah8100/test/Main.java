@@ -15,9 +15,6 @@ public class Main extends AppCompatActivity {
     // Used to load the 'native-lib' library on application startup.
     EditText EtUsername;
     EditText EtPassword;
-    static {
-        System.loadLibrary("native-lib");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

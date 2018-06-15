@@ -39,7 +39,7 @@
                 <ImageView
                     android:id="@+id/IvImage"
                     android:layout_width="80dp"
-                    android:src="@drawable/img1"
+                    android:src="@drawable/tikciticon"
                     android:layout_height="60dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"

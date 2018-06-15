@@ -1,3 +1,0 @@
-/home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/rebuild_cache.dir
-/home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/edit_cache.dir
-/home/jeremiah/StudioProjects/Tikcit/app/.externalNativeBuild/cmake/release/x86/CMakeFiles/native-lib.dir

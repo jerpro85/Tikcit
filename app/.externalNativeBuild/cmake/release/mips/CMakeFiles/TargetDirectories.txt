@@ -1,3 +1,0 @@
-C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/native-lib.dir
-C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/edit_cache.dir
-C:/Users/jeremiah8100/Documents/GitHub/Tikcit/app/.externalNativeBuild/cmake/release/mips/CMakeFiles/rebuild_cache.dir
