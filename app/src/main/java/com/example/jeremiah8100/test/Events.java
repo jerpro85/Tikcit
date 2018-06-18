@@ -30,27 +30,52 @@ public class Events extends Fragment {
     public Events() {
         // Required empty public constructor
     }
-
+    List<Event> events;
+    Eventadapter eventadapter;
+    boolean custom = false;
+    String Title = "Events";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         try {
-            ((Inapp) getActivity()).SetTitle("Events");
+            ((Inapp) getActivity()).SetTitle(Title);
         } catch (Exception e){
 
         }
-        View main = inflater.inflate(R.layout.fragment_events, container, false);
-        List<Event> events = Connection.GetEvents(Sessions.currentSession.account);
 
-        //events.add(new Event("Databinding", "Binding van data met controls"));
-        //for(int a = 0;a < 20;a++)
-        //vents.add(new Event("Hackaton", "Een wedstrijd waarbij de groep met de beste applicatie wint"));
+        if(!custom)
+            events = Connection.GetEvents(Sessions.currentSession.account);
+        View main = inflater.inflate(R.layout.fragment_events, container, false);
+
 
         ListView lv = main.findViewById(R.id.LvEventItems);
-        lv.setAdapter(new Eventadapter(getActivity(),events));
+        eventadapter = new Eventadapter(getActivity(),events);
+        lv.setAdapter(eventadapter);
         return main;
+    }
+
+    public static Events Normal(){
+        Events ev = new Events();
+        ev.custom = true;
+        ev.events = Connection.GetEvents(Sessions.currentSession.account);
+        return ev;
+    }
+
+    public static Events Bookmarked(){
+        Events ev = new Events();
+
+       ev.events = new ArrayList<>();
+        ev.custom = true;
+        for(Event e : Connection.GetEvents(Sessions.currentSession.account) ){
+            if(Database.db.IsBookMarked(e)){
+                ev.events.add(e);
+            }
+            ev.Title = "Bookmarked Events";
+        }
+
+        return ev;
     }
 
 }

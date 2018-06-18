@@ -27,7 +27,6 @@ public class Database {
         Open();
         System.out.println("db opened");
         database.execSQL("CREATE TABLE IF NOT EXISTS bookmarks(Eventid TEXT)");
-        database.execSQL("CREATE TABLE IF NOT EXISTS tickets(Eventname TEXT, Activityname TEXT, Image TEXT)");
         Close();
     }
 
@@ -50,11 +49,27 @@ public class Database {
 
 
 
-    public List<Event> GetBookmarkedEvents(){
-        List<Event> events = new ArrayList<>();
+    public boolean IsBookMarked(Event event){
+        int count = 0;
         Open();
+        Cursor select = database.rawQuery("SELECT * FROM bookmarks WHERE Eventid=?", new String[]{ event.Id});
+        count = select.getCount();
+        select.close();
         Close();
-        return events;
+        System.out.println("Count: " + count);
+        return count > 0;
+    }
+
+    public void BookmarkEvent(Event event){
+        Open();
+        database.execSQL("INSERT INTO bookmarks (Eventid)VALUES('"+event.Id+"')");
+        Close();
+    }
+
+    public void UnbookmarkEvent(Event event){
+        Open();
+        database.execSQL("DELETE FROM bookmarks WHERE Eventid='"+event.Id+"'");
+        Close();
     }
 
     public void GetTickets() {

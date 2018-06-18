@@ -26,6 +26,16 @@ public class Inapp extends AppCompatActivity {
 
     }
 
+    public void BookmarkClick(View view){
+        HideSidebar();
+        nav.Show(Events.Bookmarked());
+    }
+
+    public void EventsClick(View view){
+        HideSidebar();
+        nav.Show(Events.Normal());
+    }
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
