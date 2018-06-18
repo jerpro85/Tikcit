@@ -1,5 +1,7 @@
 package com.example.jeremiah8100.test.Items;
 
+import com.example.jeremiah8100.test.Connection;
+
 import java.net.IDN;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,14 +17,16 @@ public class Event {
     public String Id;
     public Date Startdate;
     public Date Enddate;
-    public List<Activity> Activities = new ArrayList<>();
 
-    public Event(String Id, String Name, String Description, List<Activity> Activities, Date Startdate, Date Enddate){
+    public Event(String Id, String Name, String Description, Date Startdate, Date Enddate){
         this.Name = Name;
         this.Description = Description;
         this.Id= Id;
-        this.Activities = Activities;
         this.Startdate = Startdate;
         this.Enddate = Enddate;
+    }
+
+    public List<Activity> GetActivities(){
+        return Connection.GetActivities(Id, Sessions.currentSession.account);
     }
 }

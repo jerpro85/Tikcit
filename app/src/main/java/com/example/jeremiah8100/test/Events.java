@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,17 +36,20 @@ public class Events extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        try {
+            ((Inapp) getActivity()).SetTitle("Events");
+        } catch (Exception e){
+
+        }
         View main = inflater.inflate(R.layout.fragment_events, container, false);
         List<Event> events = Connection.GetEvents(Sessions.currentSession.account);
-        for(Event event : events){
-            Database.db.AddEvent(event);
-        }
+
         //events.add(new Event("Databinding", "Binding van data met controls"));
         //for(int a = 0;a < 20;a++)
         //vents.add(new Event("Hackaton", "Een wedstrijd waarbij de groep met de beste applicatie wint"));
 
         ListView lv = main.findViewById(R.id.LvEventItems);
-        lv.setAdapter(new Eventadapter(getContext(),events));
+        lv.setAdapter(new Eventadapter(getActivity(),events));
         return main;
     }
 

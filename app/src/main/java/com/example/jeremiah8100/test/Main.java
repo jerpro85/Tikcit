@@ -15,9 +15,6 @@ public class Main extends AppCompatActivity {
     // Used to load the 'native-lib' library on application startup.
     EditText EtUsername;
     EditText EtPassword;
-    static {
-        System.loadLibrary("native-lib");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,9 @@ public class Main extends AppCompatActivity {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    public native String stringFromJNI();
 
     public void Login(View v){
+        System.out.println("okay");
         Account.Result result = Connection.Login(EtUsername.getText().toString(), EtPassword.getText().toString());
         System.out.println(result.message);
         if(result.authenticated) {

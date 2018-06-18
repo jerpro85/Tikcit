@@ -66,13 +66,17 @@ public class Connection {
                         System.out.println("b1" + e.getMessage());
                     }
 
+
+                    System.out.println("woah");
                     InputStream is = conn.getInputStream();
 
                     InputStreamReader isr = new InputStreamReader(is);
 
                     BufferedReader br = new BufferedReader(isr);
                     String inputLine;
+
                     while ((inputLine = br.readLine()) != null) {
+                        System.out.println(inputLine);
                         response.content = inputLine;
                     }
                     response.url = conn.getHeaderField("Location");
@@ -136,7 +140,7 @@ public class Connection {
 
 
     public static Account.Result Login(String email, String password){
-        ApiResponse response = Post("https://api.tikcit.com/oauth/authorize","client_id=vH20yrkqW0aKOM8Z1nQAHlg2Ik4doy&state=&scope=unrestricted&email="+email+"&password="+password+"", null);
+        ApiResponse response = Post("https://api.tikcit.com/oauth/authorize","client_id=vH20yrkqW0aKOM8Z1nQAHlg2Ik4doy&state=&scope=unrestricted&email="+email+"&password="+password, null);
         Account.Result result = new Account.Result();
         if(response.content!=null){
             result.message = "Foute inloggegevens!";
@@ -178,7 +182,7 @@ public class Connection {
                 Date Enddate = format.parse(tobj.getJSONObject("dateEnd").getString("$date"));
                 String eventid = tobj.getJSONObject("_id").getString("$oid");
                 List<Activity> activities = GetActivities(eventid, account);
-                Event event = new Event(eventid, tobj.getString("name"), tobj.getString("description"), activities, Startdate, Enddate);
+                Event event = new Event(eventid, tobj.getString("name"), tobj.getString("description"), Startdate, Enddate);
                 events.add(event);
 
             }
@@ -190,18 +194,21 @@ public class Connection {
         return events;
     }
 
-    private static List<Activity> GetActivities(String eventid, Account account){
+    public static List<Activity> GetActivities(String eventid, Account account){
         List<Activity> activities = new ArrayList<Activity>();
-        ApiResponse response = Get("https://api.tikcit.com/events/", eventid + "/statistics", account.getToken());
+        ApiResponse response = Get("https://api.tikcit.com/events/"+ eventid + "/statistics","", account.getToken());
+
         try {
-            JSONArray arr = new JSONArray(response.content);
+            JSONArray arr = new JSONObject(response.content).getJSONArray("activities");
 
             for(int a = 0;a < arr.length();a++) {
-                System.out.println("Activity: " + arr.getJSONObject(a).toString());
+
+
                 JSONObject tobj = arr.getJSONObject(a);
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm");
-
-
+                ApiResponse responseac = Get("https://api.tikcit.com/events/"+ eventid + "/activities/" + tobj.getJSONObject("_id").getString("$oid"),"", account.getToken());
+                System.out.println("Activity: " + responseac.content);
+                tobj = new JSONObject(responseac.content);
                 Date Startdate = format.parse(tobj.getJSONObject("dateStart").getString("$date"));
                 Date Enddate = format.parse(tobj.getJSONObject("dateEnd").getString("$date"));
                 Activity activity = new Activity(tobj.getJSONObject("_id").getString("$oid"), tobj.getString("name"), tobj.getString("description"), Startdate, Enddate);

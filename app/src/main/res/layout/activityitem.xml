@@ -8,7 +8,6 @@
 
         <RelativeLayout
             android:layout_marginTop="0dp"
-           android:layout_below="@id/TvDate"
             android:id="@+id/split"
             android:layout_marginBottom="5dp"
 
@@ -19,29 +18,25 @@
 
         <LinearLayout
             android:id="@+id/RlMain"
+            android:background="#fff"
             android:layout_width="match_parent"
             android:minHeight="100dp"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/TvDate">
+            android:paddingHorizontal="5dp"
+            >
 
-                <ImageView
-                    android:id="@+id/IvImage"
-                    android:layout_width="100dp"
-                    android:src="@drawable/img1"
-                    android:layout_height="100dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:scaleType="centerCrop" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
-                    android:background="@drawable/eventitem_model"
+                    android:background="#fff"
                     android:layout_height="match_parent" android:layout_weight="1">
                         <TextView
                             android:id="@+id/TvName"
@@ -65,6 +60,7 @@
                             android:textSize="11dp" />
                 </LinearLayout>
 
+
         </LinearLayout>
 
         <RelativeLayout
@@ -76,7 +72,7 @@
 
 
             android:layout_width="match_parent"
-            android:background="#111"
+            android:background="#fff"
             android:layout_height="1dp"></RelativeLayout>
 
 </RelativeLayout>
